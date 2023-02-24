@@ -6,10 +6,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ManageExpense from "./screens/ManageExpense";
 import RecentExpenses from "./screens/RecentExpenses";
 import AllExpenses from "./screens/AllExpenses";
-import ExpensesOverview from "./screens/ExpensesOverview";
+// import ExpensesOverview from "./screens/ExpensesOverview";
 
 const Stack = createNativeStackNavigator();
-const BottomTab = createBottomTabNavigator();
+const BottomTabs = createBottomTabNavigator();
 // two navigators
 
 function ExpensesOverview() {
