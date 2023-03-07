@@ -1,7 +1,9 @@
 import { Text, View, StyleSheet } from "react-native";
+import { GlobalStyles } from "../../constants/styles";
+
 import ExpensesSummary from "./ExpensesSummary";
 import ExpensesList from "./ExpensesList";
-import { GlobalStyles } from "../../constants/styles";
+// last X days with the total price + list of expenses below
 
 function ExpensesOutput({ expenses, expensesPeriod, fallbackText }) {
   let content = <Text style={styles.infoText}>{fallbackText}</Text>;
@@ -24,7 +26,7 @@ const styles = StyleSheet.create({
     paddingTop: 24,
     paddingBottom: 0,
     backgroundColor: GlobalStyles.colors.primary700,
-    flex: 1,
+    flex: 1
   },
   infoText: {
     color: "white",

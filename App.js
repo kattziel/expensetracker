@@ -7,7 +7,6 @@ import { Ionicons } from "@expo/vector-icons";
 import ManageExpense from "./screens/ManageExpense";
 import RecentExpenses from "./screens/RecentExpenses";
 import AllExpenses from "./screens/AllExpenses";
-// import ExpensesOverview from "./screens/ExpensesOverview";
 
 import { GlobalStyles } from "./constants/styles";
 import IconButton from "./components/UI/IconButton";
