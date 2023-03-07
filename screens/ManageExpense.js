@@ -16,9 +16,15 @@ function ManageExpense({ route, navigation }) {
     // navigation should be wrapped in useEffect or useLayout
   }, [navigation, isEditing]);
 
-  function deleteExpenseHandler() {}
-  function cancelHandler() {};
-  function confirmHandler() {};
+  function deleteExpenseHandler() {
+    navigation.goBack();
+  }
+  function cancelHandler() {
+    navigation.goBack();
+  };
+  function confirmHandler() {
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.container}>
