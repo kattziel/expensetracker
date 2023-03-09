@@ -1,8 +1,23 @@
 import { View, StyleSheet, Text } from "react-native";
 import Input from "./Input";
+import { useState } from "react";
 
 function ExpenseForm() {
-  function amountChangedHandler() {}
+  const [inputValues, setInputValues] = useState({
+    amount: "",
+    date: "",
+    description: "",
+  });
+
+  function inputChangedHandler(inputIdentifier, enteredValue) {
+    setInputValues((curInputValues) => {
+      return {
+        ...curInputValues,
+        [inputIdentifier]: enteredValue,
+      };
+    });
+  }
+  // a generic function that takes inputIdentifier as a 1st parameter, so that in the return statement only value stored in an inputIdentifier is changed; e.g. only amount property is changed
 
   return (
     <View style={styles.form}>
@@ -13,7 +28,8 @@ function ExpenseForm() {
           label="Amount"
           textInputConfig={{
             keyboardType: "decimal-pad",
-            onChangeText: amountChangedHandler,
+            onChangeText: inputChangedHandler.bind(this, "amount"),
+            value: inputValues.amount,
           }}
         />
         <Input
@@ -22,7 +38,8 @@ function ExpenseForm() {
           textInputConfig={{
             placeholder: "YYYY-MM-DD",
             maxLength: 10,
-            onChangeText: () => {},
+            onChangeText: inputChangedHandler.bind(this, "date"),
+            value: inputValues.date,
           }}
         />
       </View>
@@ -31,6 +48,8 @@ function ExpenseForm() {
         label="Description"
         textInputConfig={{
           multiline: true,
+          onChangeText: inputChangedHandler.bind(this, "description"),
+          value: inputValues.description,
         }}
       />
     </View>
