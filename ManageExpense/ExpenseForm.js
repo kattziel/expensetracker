@@ -2,12 +2,13 @@ import { View, StyleSheet, Text } from "react-native";
 import Input from "./Input";
 import { useState } from "react";
 import Button from "../components/UI/Button";
+import { getFormattedDate } from "../util/date";
 
-function ExpenseForm({onCancel, onSubmit, submitButtonLabel}) {
+function ExpenseForm({onCancel, onSubmit, submitButtonLabel, defaultValues}) {
   const [inputValues, setInputValues] = useState({
-    amount: "",
-    date: "",
-    description: "",
+    amount: defaultValues ? defaultValues.amount.toString() : '',
+    date: defaultValues ? getFormattedDate(defaultValues.date) : '',
+    description: defaultValues ? defaultValues.description : '',
   });
 
   function inputChangedHandler(inputIdentifier, enteredValue) {
@@ -19,6 +20,15 @@ function ExpenseForm({onCancel, onSubmit, submitButtonLabel}) {
     });
   }
   // a generic function that takes inputIdentifier as a 1st parameter, so that in the return statement only value stored in an inputIdentifier is changed; e.g. only amount property is changed
+
+  function submitHandler() {
+    const expenseData = {
+        amount: +inputValues.amount,
+        date: new Date(inputValues.date),
+        description: inputValues.description
+    };
+    onSubmit(expenseData);
+  }
 
   return (
     <View style={styles.form}>
